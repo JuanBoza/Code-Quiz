@@ -1,4 +1,4 @@
-var questions = [
+/* var questions = [
     {
         prompt: 
         answer: 
@@ -15,6 +15,7 @@ var questions = [
 
 
 ]
+*/ 
 
 for(var i=0; i <questions.lenth; i++){
     var response = window.prompt(questions[i].prompt); 
