@@ -10,41 +10,7 @@ let score = 0
 let questionCounter = 0
 let availableQuestions = []
 
-let questions = [
-    {
-        questions: 'What are variables used for in JavaScript Programs?', 
-        choice1: 'Storing numbers, dates, or other values',
-        choice2: 'Varying randomly',
-        choice3: 'Causing high-school algebra flashbacks',
-        choice4: 'None of the above',
-        answer: 1, 
-    },
-    {
-        questions: 'What are variables used for in JavaScript Programs?', 
-        choice1: 'Storing numbers, dates, or other values',
-        choice2: 'Varying randomly',
-        choice3: 'Causing high-school algebra flashbacks',
-        choice4: 'None of the above',
-        answer: 1, 
-    },
-    {
-        questions: 'What are variables used for in JavaScript Programs?', 
-        choice1: 'Storing numbers, dates, or other values',
-        choice2: 'Varying randomly',
-        choice3: 'Causing high-school algebra flashbacks',
-        choice4: 'None of the above',
-        answer: 1, 
-    },
-    {
-        questions: 'What are variables used for in JavaScript Programs?', 
-        choice1: 'Storing numbers, dates, or other values',
-        choice2: 'Varying randomly',
-        choice3: 'Causing high-school algebra flashbacks',
-        choice4: 'None of the above',
-        answer: 1, 
-    },
 
-]
 
 const SCORE_POINTS = 100
 const MAX_QUESTIONS = 4
@@ -67,75 +33,21 @@ getNewQuestion = () => {
     progressText.innertext = 'Question $ '
 }
 
+var timer = document.querySelector("#start")
+var timeLeft = 90
 
+timer.addEventListener("click", function() {
 
+    var timeInterval = setInterval(function() {
+        currentTime.textContent = "Remaining Time: " + timeLeft; 
+        timeLeft--; 
+        if (timeLeft === 0) { 
+            currentTime.textContent = "No more Time"; 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-/* var questions = [
-    {
-        prompt: 
-        answer: 
-
-    }, 
-    {
-        prompt: 
-        answer: 
-
-
-    }
-
-
-
-
-]
-*/ 
-
-
-/*
-for(var i=0; i <questions.lenth; i++){
-    var response = window.prompt(questions[i].prompt); 
-    if(response == questions[i].answsers){
-        score++; 
-        alert("Correct!"); 
-    } else { 
-        alert("Wrong!"); 
-    }
-}
-
-alert("you got" + score + "/" + questions.length); 
-
-*/ 
+            clearInterval(timeInterval); 
+        }
+        }, 1000);
+        render(questionIndex);
+        
+    
+})
