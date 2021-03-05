@@ -1,39 +1,17 @@
-const question = document.querySelector('#question'); 
-const choices = Array.from(document.querySelectorAll('#.choice-text')); 
-const progressText = document.querySelector('#progressText'); 
-const scoreText= document.querySelector('#score'); 
-const progressBarFull = document.querySelector('#progressBarFull'); 
 
-let currentQuestion = {}
-let acceptingAnswers = true
-let score = 0
-let questionCounter = 0
-let availableQuestions = []
+var currentQuestion = {}
+var acceptingAnswers = true
+var score = 0
+var questionIndex = 0;
+var questionCounter = 0
+var availableQuestions = []
+var penalty = 10; 
+var time = document.querySelector("#time");
 
 
 
-const SCORE_POINTS = 100
-const MAX_QUESTIONS = 4
 
-startGame = () => {
-    questionCounter = 0 
-    score = 0
-    availableQuestions = [...questions ]
-    getNewQuestions()
-}
-
-getNewQuestion = () => {
-    if(availableQuestions.length === 0 || questionsCounter > MAX_QUESTIONS) {
-        localStorage.setITem('mostRecentScore',score)
-
-        return window.location.assign('/end.html')
-    }
-    
-    questionCounter++
-    progressText.innertext = 'Question $ '
-}
-
-var timer = document.querySelector("#start")
+var time = document.querySelector("#start")
 var timeLeft = 90
 
 timer.addEventListener("click", function() {
@@ -51,3 +29,23 @@ timer.addEventListener("click", function() {
         
     
 })
+
+
+function render(questionIndex) {
+    questionsDiv.innerHTML = "";
+    ulCreate.innerHTML = "";
+    for (var i = 0; i < quiz.length; i++) {
+        var userQuestion = quiz[uestionIndex].question;
+        var userchoices = quiz[questionIndex].choices;
+        questionsDiv.textContent = userQuestion;
+        }
+
+    userChoices.forEach(function (newItem) {
+        var listItem = document.createElement("li"); 
+        listItem.textContent = newItem;
+        questionsDiv.appendChild(ulCreate);
+        ulCreate.appendChild(listItem);
+        listItem.addEventListener("click", (check));
+    })
+    
+}
