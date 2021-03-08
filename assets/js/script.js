@@ -10,7 +10,7 @@ var questionsElement = document.querySelector("#question");
 var questionsTitle = document.querySelector("#questionTitle");
 var choicesElement = document.querySelector("#choices");
 var feedbackElement = document.querySelector("#feedback");
-var name = document.querySelector("#name");
+var nameL = document.querySelector("#name");
 var submitBtn = document.querySelector("#submit");
 
 
@@ -105,3 +105,22 @@ function endQuiz() {
 
 }
 
+function highScore() {
+    var init = nameL.value.trim();
+
+    if (init !=="") {
+        var scores = JSON.parse(window.localStorage.getItem("scores")) || [];
+    }
+
+    var newS = {
+        score: count,
+        init: init
+    };
+    scores.push(newS);
+    window.localStorage.setItem("scores",JSON.stringify(scores)) || [];
+    window.location.href = "highscores.html";
+}
+
+startQuiz();
+cancelBtn.onclick = cancel();
+submitBtn.onclick = highScore;
