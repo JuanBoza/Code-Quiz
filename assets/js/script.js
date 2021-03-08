@@ -3,10 +3,10 @@ var currentQuestion = {}
 var acceptingAnswers = true
 var score = 0
 var questionIndex = 0;
-var questionCounter = 0
 var availableQuestions = []
 var penalty = 10; 
 var time = document.querySelector("#time");
+var ulCreate = document.createElement("ul");
 
 
 
@@ -48,4 +48,31 @@ function render(questionIndex) {
         listItem.addEventListener("click", (check));
     })
     
-}
+function check(event) {
+    var element= event.target; 
+
+    if (element.matches("li")) {
+        score++; 
+        createDiv.textContent = "Corrrect"; 
+    
+    } else { 
+        timeLeft =timeleft - penalty; 
+        createDiv.textContent = "Incorrect! The correct answer is: " + quiz[questionIndex].answer;
+        }
+
+    }
+    }
+
+    questionIndex++;
+
+    if (questionIndex >= quiz.length) {
+        createDiv.textContent = "End of quiz!";
+        
+
+    } else {
+        render(questionIndex);
+    }
+    
+    questionsDiv.appendChild(createDiv);
+
+
