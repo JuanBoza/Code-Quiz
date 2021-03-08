@@ -1,78 +1,50 @@
 
-var currentQuestion = {}
-var acceptingAnswers = true
-var score = 0
-var questionIndex = 0;
-var availableQuestions = []
-var penalty = 10; 
-var time = document.querySelector("#time");
-var ulCreate = document.createElement("ul");
+var count = 150; 
+var index = 0; 
+var timeID; 
+
+var startBtn = document.querySelector("#startBtn");
+var cancelBtn = document.querySelector("#cancelBtn");
+var timer = document.querySelector("#tmer");
+var questionsElement = document.querySelector("#question");
+var questionsTitle = document.querySelector("#questionTitle");
+var choicesElement = document.querySelector("#choices");
+var feedbackElement = document.querySelector("#feedback");
+var name = document.querySelector("#name");
+var submitBtn = document.querySelector("#submit");
 
 
-
-
-var time = document.querySelector("#start")
-var timeLeft = 90
-
-timer.addEventListener("click", function() {
-
-    var timeInterval = setInterval(function() {
-        currentTime.textContent = "Remaining Time: " + timeLeft; 
-        timeLeft--; 
-        if (timeLeft === 0) { 
-            currentTime.textContent = "No more Time"; 
-
-            clearInterval(timeInterval); 
+function setTimer() {
+    var interval = setInterval(function() {
+        timer.innerHTML = count;
+        count--;
+        if (count === 0 ) {
+            clearInterval(interval);
+            document.getElementById("timer").innerHTML = 'done';
         }
-        }, 1000);
-        render(questionIndex);
-        
-    
-})
+    }, 1000);
+}
 
 
-function render(questionIndex) {
-    questionsDiv.innerHTML = "";
-    ulCreate.innerHTML = "";
-    for (var i = 0; i < quiz.length; i++) {
-        var userQuestion = quiz[uestionIndex].question;
-        var userchoices = quiz[questionIndex].choices;
-        questionsDiv.textContent = userQuestion;
-        }
-
-    userChoices.forEach(function (newItem) {
-        var listItem = document.createElement("li"); 
-        listItem.textContent = newItem;
-        questionsDiv.appendChild(ulCreate);
-        ulCreate.appendChild(listItem);
-        listItem.addEventListener("click", (check));
-    })
-    
-function check(event) {
-    var element= event.target; 
-
-    if (element.matches("li")) {
-        score++; 
-        createDiv.textContent = "Corrrect"; 
-    
-    } else { 
-        timeLeft =timeleft - penalty; 
-        createDiv.textContent = "Incorrect! The correct answer is: " + quiz[questionIndex].answer;
-        }
-
+function stopTimer() {
+    if (count <= 0) {
+        clearInterval(count);
     }
-    }
+}
 
-    questionIndex++;
+function cancel() {
+    cancelBtn.addEventListener("click,", function() {
+        $startScreenElement = $("#start-screen");
+        $startScreenEl.attr("class", "hide");
+    });
+}
 
-    if (questionIndex >= quiz.length) {
-        createDiv.textContent = "End of quiz!";
-        
-
-    } else {
-        render(questionIndex);
-    }
-    
-    questionsDiv.appendChild(createDiv);
-
-
+function startQuiz() {
+    questionsElement.addEventListener("click", function() {
+        var $startScreenElement = $("#start-screen");
+        $startScreenElement.attr("class", "hide");
+        questionsElement.removeAttribute("class");
+        setTimer();
+    });
+    getQuestions();
+}
