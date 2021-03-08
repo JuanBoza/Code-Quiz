@@ -1,35 +1,23 @@
 var questions = [
     {
-        questions: 'What are variables used for in JavaScript Programs?', 
-        choice1: 'Storing numbers, dates, or other values',
-        choice2: 'Varying randomly',
-        choice3: 'Causing high-school algebra flashbacks',
-        choice4: 'None of the above',
-        answer: 1, 
+        questions: 'Inside which HTML element do we put the JavaScript?', 
+        choices: ["<js>","<scripting>","<script>","<javascript>"],
+        answer:"<script>"
     },
     {
-        questions: 'What are variables used for in JavaScript Programs?', 
-        choice1: 'Storing numbers, dates, or other values',
-        choice2: 'Varying randomly',
-        choice3: 'Causing high-school algebra flashbacks',
-        choice4: 'None of the above',
-        answer: 1, 
+        questions: 'Which of the following function of Boolean object returns a string containing the source of the Boolean object?', 
+        choices: ["toSource()","valueOf()","toString()","None of the Above"],
+        answer:"toSource()"
     },
     {
-        questions: 'What are variables used for in JavaScript Programs?', 
-        choice1: 'Storing numbers, dates, or other values',
-        choice2: 'Varying randomly',
-        choice3: 'Causing high-school algebra flashbacks',
-        choice4: 'None of the above',
-        answer: 1, 
+        questions: "Which tool can you use to ensure code quality?", 
+        choices: ["Angular","jQuery","RequireJS","ESLint"],
+        answer:"ESLint"
     },
     {
-        questions: 'What are variables used for in JavaScript Programs?', 
-        choice1: 'Storing numbers, dates, or other values',
-        choice2: 'Varying randomly',
-        choice3: 'Causing high-school algebra flashbacks',
-        choice4: 'None of the above',
-        answer: 1, 
+        questions: "Which one of these is a JavaScript package manager?",
+        choices: ["Node.js","TypScript","npm","MySQL"],
+        answer: "npm"
     }
 
 ]; 
