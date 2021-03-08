@@ -48,3 +48,60 @@ function startQuiz() {
     });
     getQuestions();
 }
+
+function getQuestions() {
+    var currentQuestion = questions[index];
+    questionsTitle.textContent = currentQuestion.question;
+    choicesElement.innerHTML = "";
+
+    currentQuestion.choices.forEach(function( choice, i ){
+        var choiceNew = document.getElement("button");
+        choiceNew.setAttribute("class", "choice");
+        choiceNew.setAttribute("value", choice);
+        choiceNew.textContent = i + 1 + "." + choice;
+        choiceNew.onclick = clickQuestion;
+        choicesElement.appendChild(choiceNew);
+    });
+}
+
+function clickQuestion() {
+    if (this.value !==questions[index].answer) {
+        count -=15;
+        if (count < 0) {
+            count = 0;
+        }
+        timer.textContent = count;
+        feedbackElement.textContent = "wrong";
+
+    } else if (this.value ===questions[index].answer) {
+        feedbackElement.textContent = "correct";
+    }
+
+    feedbackElement.setAttribute("class", "feedback");
+    setTimeout(function () {
+        feedbackEl.setAttribute("class", "feedback hide");
+    }, 1000);
+    index++;
+
+    if (indexQ === questions.length) {
+        endQuiz();
+    } else {
+        getQuestion();
+    }
+}
+
+
+function endQuiz() {
+    stopTimer();
+
+    var endScreenElement = document.getElementById("end-screen");
+    endScreenElement.removeAttribute("class");
+
+    var finalScoreElement = document.getElementById("fina;-score");
+    finalScoreElement.textContent = count;
+
+    questionsElement.setAttribute("class", "hide");
+
+
+}
+
